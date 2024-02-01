@@ -1,0 +1,37 @@
+
+  /* RecipeSection.css */
+.recipe-section {
+    margin-bottom: 20px;
+  }
+  
+  .recipe-cards {
+    display: flex; 
+    flex-wrap: wrap; 
+    
+  }
+  
+  .recipe-card {
+    width: 14%; 
+    margin: 1%; 
+    box-sizing: border-box; 
+    background-color: beige;
+    text-align: center;
+  }
+  
+  .recipe-card img {
+    max-width: 50%; 
+    height: auto; 
+  
+  }
+  
+  .ingredients {
+    margin-top: 10px;
+  }
+  
+  .ingredients button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: blue;
+  }
+  

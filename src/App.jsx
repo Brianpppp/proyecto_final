@@ -1,39 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase";
-import Home from "./components/Home";
-import Login from "./components/Login";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+
+
 const App = () => {
-  const [usuario, setUsuario] = useState(null);
-  const [cargaInicial, setCargaInicial] = useState(true);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (usuarioFirebase) => {
-      try {
-        setCargaInicial(false);
-        const { email } = usuarioFirebase || {};
-        setUsuario(email);
-      } catch (error) {
-        console.error('Error durante la autenticación:', error);
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
-
   return (
-    <div>
-      {cargaInicial ? (
-        <p>Cargando...</p>
-      ) : usuario ? (
-        <Home correoUsuario={usuario} />
-      ) : (
-        <Login />
-      )}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+       
+        {/* Otras rutas según tus necesidades */}
+      </Routes>
+    </Router>
   );
 };
 
 export default App;
-
-
+//testezy nombre app
