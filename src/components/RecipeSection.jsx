@@ -1,55 +1,50 @@
-import React, { useState, useEffect } from 'react';
+// RecipeSection.jsx
 import axios from 'axios';
 import '../styles/RecipeSection.css';
+import React, { useState, useEffect } from 'react';
 
-function RecipeSection({ category }) {
+function RecipeSection({ category, apiKey, setSelectedRecipe }) {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchRecipes = async () => {
+    const getRecipes = async () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `https://api.edamam.com/api/recipes/v2?type=public&q=${category}`,
+          `https://api.spoonacular.com/recipes/complexSearch`,
           {
             params: {
-              app_id: '8f320eea',
-              app_key: '55136a7084cb4d72362f1d05336b5c02',
+              apiKey: apiKey,
+              query: category,
             },
           }
         );
-        const fetchedRecipes = response.data.hits.slice(0, 4); // Mostrar solo las primeras 4 recetas
-        setRecipes(fetchedRecipes);
+        setRecipes(response.data.results);
       } catch (error) {
         console.error(error);
-      } finally {
-        setLoading(false);
       }
+      setLoading(false);
     };
 
-    fetchRecipes();
-  }, [category]); // Se ejecutará cada vez que la categoría cambie o al cargar la página inicialmente
+    getRecipes();
+  }, [category, apiKey]);
 
   return (
-    <div className="recipe-section">
+    <div>
       <h2>{category}</h2>
       {loading ? (
-        <p>Loading...</p>
+        <p>Cargando...</p>
       ) : (
-        <div className="recipe-cards">
-          {recipes.map((recipe, index) => (
-            <div key={index} className="recipe-card">
-              <h3>{recipe.recipe.label}</h3>
-              <img src={recipe.recipe.image} alt={recipe.recipe.label} />
-              <p>Ingredients: {recipe.recipe.ingredientLines.join(', ')}</p>
-              <p>
-                Instructions: {recipe.recipe.instructions ? (
-                  <button onClick={() => window.open(recipe.recipe.url, '_blank')} className="instructions-button">View Instructions</button>
-                ) : (
-                  'Instructions available on external page. Click below to view'
-                )}
-              </p>
+        <div className="recipe-container">
+          {recipes.slice(0, 6).map((recipe, index) => (
+            <div
+              className="recipe-card"
+              key={index}
+              onClick={() => setSelectedRecipe(recipe.id)} // Pasar solo el ID de la receta
+            >
+              <h3>{recipe.title}</h3>
+              <img src={recipe.image} alt={recipe.title} className="recipe-image" />
             </div>
           ))}
         </div>

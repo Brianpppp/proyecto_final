@@ -1,57 +1,47 @@
-import React, { useState, useEffect } from 'react';
+// RecipeSearch.jsx
+
+import React, { useState } from 'react';
 import axios from 'axios';
 
-function RecipeSearch({ setRecipes }) {
+function RecipeSearch({ setRecipes, apiKey }) {
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const getRecipes = async () => {
+  const handleChange = (event) => {
+    setQuery(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setLoading(true);
     try {
       const response = await axios.get(
-        'https://api.edamam.com/api/recipes/v2?type=public',                                                        
+        `https://api.spoonacular.com/recipes/complexSearch`,
         {
           params: {
-            app_id: '8f320eea',
-            app_key: '55136a7084cb4d72362f1d05336b5c02',
-            q: query
+            apiKey: apiKey,
+            query: query,
           },
         }
       );
-      setRecipes(response.data.hits);
+      setRecipes(response.data.results);
     } catch (error) {
       console.error(error);
     }
     setLoading(false);
   };
 
-  useEffect(() => {
-    const delay = 60000 / 10; // Límite de 10 solicitudes por minuto
-    const timeout = setTimeout(() => {
-      getRecipes();
-    }, delay);
-    return () => clearTimeout(timeout);
-  }, [query]); // Se ejecuta cada vez que query cambia
-
-  const handleChange = (event) => {
-    setQuery(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    getRecipes();
-  };
-
   return (
-    <div>
+    <div className="recipe-search-container">
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Buscar recetas..."
           value={query}
           onChange={handleChange}
+          className="search-input"
         />
-        <button type="submit" disabled={loading}>Buscar</button>
+        <button type="submit" className="search-button">Buscar</button>
       </form>
       {loading && <p>Cargando...</p>}
     </div>
@@ -59,3 +49,4 @@ function RecipeSearch({ setRecipes }) {
 }
 
 export default RecipeSearch;
+

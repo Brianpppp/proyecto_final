@@ -1,0 +1,48 @@
+.recipe-details-container {
+    margin: 20px;
+  }
+  
+  .recipe-details-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .recipe-details-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .recipe-details-info {
+    margin-bottom: 20px;
+  }
+  
+  .recipe-details-info p {
+    margin: 5px 0;
+  }
+  
+  .recipe-details-ingredients {
+    margin-bottom: 20px;
+  }
+  
+  .recipe-details-ingredients ul {
+    list-style-type: none;
+  }
+  
+  .recipe-details-ingredients li {
+    margin-bottom: 5px;
+  }
+  
+  .recipe-details-instructions {
+    margin-bottom: 20px;
+  }
+  
+  .recipe-details-instructions ol {
+    list-style-type: decimal;
+  }
+  
+  .recipe-details-instructions li {
+    margin-bottom: 5px;
+  }
+  

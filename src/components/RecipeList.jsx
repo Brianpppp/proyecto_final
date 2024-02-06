@@ -1,19 +1,18 @@
 import React from 'react';
+import RecipeCard from './RecipeCard';
 import '../styles/RecipeList.css';
 
-function RecipeList({ recipes }) {
+function RecipeList({ recipes, setSelectedRecipe }) {
   return (
-    <div className="recipe-container">
-      {recipes.map((recipe, index) => (
-        <div className="recipe-item" key={index}>
-          <img src={recipe.recipe.image} alt={recipe.recipe.label} />
-          <div className="recipe-details">
-            <h3>{recipe.recipe.label}</h3>
-            <p className="ingredients">{recipe.recipe.ingredientLines.join(', ')}</p>
-            <p className="time">{recipe.recipe.totalTime} min</p>
-          </div>
-        </div>
-      ))}
+    <div className="recipe-list-container">
+      <h2>Recetas:</h2>
+      <ul className="recipe-list">
+        {recipes.map((recipe, index) => (
+          <li key={index} onClick={() => setSelectedRecipe(recipe.id)}> {/* Pasar solo el ID de la receta */}
+            <RecipeCard recipe={recipe} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
