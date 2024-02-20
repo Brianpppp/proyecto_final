@@ -1,0 +1,19 @@
+.recipe-results {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .recipe-item {
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  .recipe-item img {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .recipe-details {
+    margin-left: 20px;
+  }
+  

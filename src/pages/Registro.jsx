@@ -1,27 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import React, { useState } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
-import '../styles/Login.css';
 
-const Login = () => {
+
+const Registro = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // Si el usuario ya está autenticado, redirigir a la página de inicio
-        navigate('/home');
-      }
-    });
-    // Limpia el efecto al desmontar el componente
-    return () => unsubscribe();
-  }, []); // El segundo argumento del useEffect está vacío para que se ejecute solo una vez al montar el componente
-
-  const handleAuthentication = async (e) => {
+  const handleRegistration = async (e) => {
     e.preventDefault();
 
     // Validación: Verificar que se haya ingresado un correo electrónico y una contraseña
@@ -32,20 +21,21 @@ const Login = () => {
 
     try {
       setError(null);
-      await signInWithEmailAndPassword(auth, email, password);
-      // Redirigir a la página principal u otra página después de la autenticación exitosa
-      navigate('/home');
+      // Crear una nueva cuenta de usuario en Firebase Authentication
+      await createUserWithEmailAndPassword(auth, email, password);
+      // Redirigir a la página de inicio después del registro exitoso
+      navigate('/');
     } catch (error) {
       console.error(error.message);
-      setError('Error durante la autenticación. Verifica tu correo y contraseña.');
+      setError('Error durante el registro. Por favor, inténtalo de nuevo.');
     }
   };
 
   return (
     <div className="container">
-      <h2 className="title">Iniciar sesión</h2>
+      <h2 className="title">Registro</h2>
       {error && <p className="error">{error}</p>}
-      <form className="form" onSubmit={handleAuthentication}>
+      <form className="form" onSubmit={handleRegistration}>
         <div className="input-container">
           <label htmlFor="email" className="label">Correo electrónico:</label>
           <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -55,12 +45,12 @@ const Login = () => {
           <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
         <div className="button-container">
-          <button type="submit">Iniciar sesión</button>
+          <button type="submit">Registrarse</button>
         </div>
       </form>
-      <p>¿No tienes una cuenta? <Link to="/registro">Regístrate aquí</Link>.</p>
+      <p>¿Ya tienes una cuenta? <Link to="/">Inicia sesión aquí</Link>.</p>
     </div>
   );
 };
 
-export default Login;
+export default Registro;

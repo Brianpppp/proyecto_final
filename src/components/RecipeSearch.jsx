@@ -1,11 +1,11 @@
-// RecipeSearch.jsx
-
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { searchRecipes } from '../services/Api'; // Importa la función de búsqueda de recetas
+import '../styles/RecipeSearch.css';
 
-function RecipeSearch({ setRecipes, apiKey }) {
+function RecipeSearch() {
   const [query, setQuery] = useState('');
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setQuery(event.target.value);
@@ -13,27 +13,17 @@ function RecipeSearch({ setRecipes, apiKey }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setLoading(true);
     try {
-      const response = await axios.get(
-        `https://api.spoonacular.com/recipes/complexSearch`,
-        {
-          params: {
-            apiKey: apiKey,
-            query: query,
-          },
-        }
-      );
-      setRecipes(response.data.results);
+      const searchResults = await searchRecipes(query); // Utiliza la función de búsqueda de recetas
+      navigate(`/search-results?query=${encodeURIComponent(query)}`, { state: { searchResults } });
     } catch (error) {
       console.error(error);
     }
-    setLoading(false);
   };
 
   return (
     <div className="recipe-search-container">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="search-form">
         <input
           type="text"
           placeholder="Buscar recetas..."
@@ -43,10 +33,8 @@ function RecipeSearch({ setRecipes, apiKey }) {
         />
         <button type="submit" className="search-button">Buscar</button>
       </form>
-      {loading && <p>Cargando...</p>}
     </div>
   );
 }
 
 export default RecipeSearch;
-
