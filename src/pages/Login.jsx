@@ -13,18 +13,18 @@ const Login = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        // Si el usuario ya está autenticado, redirigir a la página de inicio
+      
         navigate('/home');
       }
     });
-    // Limpia el efecto al desmontar el componente
+    
     return () => unsubscribe();
   }, []); // El segundo argumento del useEffect está vacío para que se ejecute solo una vez al montar el componente
 
   const handleAuthentication = async (e) => {
     e.preventDefault();
 
-    // Validación: Verificar que se haya ingresado un correo electrónico y una contraseña
+   
     if (!email || !password) {
       setError('Por favor, ingresa un correo electrónico y una contraseña.');
       return;

@@ -3,6 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 import '../styles/Navbar.css';
+import RecipeSearch from './RecipeSearch';
+import { TiHomeOutline } from "react-icons/ti";
+import { BiLogOut } from "react-icons/bi";
+import { PiBowlFood } from "react-icons/pi";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -10,26 +14,28 @@ const Navbar = () => {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
-        // Usuario cerró sesión correctamente
-        // Redirigir a la página de inicio o a donde desees
         navigate('/');
       })
       .catch((error) => {
-        // Ocurrió un error durante el cierre de sesión
         console.error(error);
       });
+  };
+
+  const handleNavigateToMealDiary = () => {
+    navigate('/MealDiary');
   };
 
   return (
     <nav className="navbar">
       <ul className="nav-list">
         <li className="nav-item">
-          <Link to="/" className="nav-link">Home</Link>
+          <Link to="/" className="nav-link"><TiHomeOutline size={40} /></Link>
         </li>
-        {/* Agrega otros elementos del navbar según tus necesidades */}
+        <RecipeSearch/>
         {auth.currentUser && (
           <li className="nav-item">
-            <button className="logout-button" onClick={handleSignOut}>Cerrar sesión</button>
+            <button className="icon-button" onClick={handleSignOut}><BiLogOut size={40} /></button>
+            <button className="icon-button" onClick={handleNavigateToMealDiary}><PiBowlFood size={40} /></button>
           </li>
         )}
       </ul>

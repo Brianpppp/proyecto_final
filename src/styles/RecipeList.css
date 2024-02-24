@@ -6,10 +6,19 @@
 .recipe-item {
   width: 200px; /* Establecer el ancho deseado para cada receta */
   margin: 10px; /* Agregar un pequeño margen entre las recetas */
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregar una sombra suave */
+  background-color: #ffffff;
+  transition: transform 0.3s ease; /* Agregar una transición suave */
+}
+.recipe-item:hover {
+  transform: translateY(-5px); /* Efecto de levantamiento al pasar el ratón */
 }
 
 .recipe-item img {
   width: 100%; /* Hacer que la imagen ocupe todo el ancho disponible */
+  border-radius: 10px;
 }
 
 .recipe-list {
@@ -31,4 +40,14 @@
 
 .recipe-details {
   text-align: center; /* Centrar el texto del título */
+}
+.recipe-details h3 {
+  margin-top: 10px;
+  font-family: 'Arial', sans-serif; /* Usar una tipografía elegante */
+  color: #333333; /* Color de texto suave */
+}
+.recipe-details p {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #666666; /* Color de texto más claro */
 }

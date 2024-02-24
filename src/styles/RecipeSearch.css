@@ -1,33 +1,27 @@
-/* RecipeSearch.css */
-
 .recipe-search-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+  margin-right: 25px;
 }
 
 .search-form {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
   display: flex;
+  align-items: center;
 }
 
 .search-input {
-  flex: 1;
-  padding: 10px;
-  font-size: 16px;
+  padding: 8px;
+  font-size: 14px; /* Reducir el tamaño de la fuente */
   border: none;
-  outline: none;
+  border-radius: 5px 0 0 5px;
+  width: 700px;
 }
 
 .search-button {
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 8px;
+  font-size: 14px; /* Reducir el tamaño de la fuente */
   background-color: #007bff;
-  color: #fff;
+  color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 0 5px 5px 0;
   cursor: pointer;
 }
 

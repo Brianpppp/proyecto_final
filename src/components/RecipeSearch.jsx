@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { searchRecipes } from '../services/Api'; // Importa la función de búsqueda de recetas
+import { searchRecipes } from '../services/Api';
 import '../styles/RecipeSearch.css';
+import { BiSearch } from "react-icons/bi";
 
 function RecipeSearch() {
   const [query, setQuery] = useState('');
@@ -14,7 +15,7 @@ function RecipeSearch() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const searchResults = await searchRecipes(query); // Utiliza la función de búsqueda de recetas
+      const searchResults = await searchRecipes(query);
       navigate(`/search-results?query=${encodeURIComponent(query)}`, { state: { searchResults } });
     } catch (error) {
       console.error(error);
@@ -31,7 +32,7 @@ function RecipeSearch() {
           onChange={handleChange}
           className="search-input"
         />
-        <button type="submit" className="search-button">Buscar</button>
+        <button type="submit" className="search-button"><BiSearch /></button>
       </form>
     </div>
   );

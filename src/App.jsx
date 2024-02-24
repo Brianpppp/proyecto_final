@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Registro from './pages/Registro';
 import SearchResultsPage from './pages/SearchResultsPage';
+import MealDiary from './pages/MealDiary';
+
 
 const App = () => {
   return (
@@ -13,8 +15,7 @@ const App = () => {
         <Route path="/registro" element={<Registro />} />
         <Route path="/home" element={<Home />} />
         <Route path="/search-results" element={<SearchResultsPage />} /> {/* Nueva ruta para la página de resultados de búsqueda */}
-       
-        {/* Otras rutas según tus necesidades */}
+        <Route path='/mealdiary'element={<MealDiary/>}/>
       </Routes>
     </Router>
   );

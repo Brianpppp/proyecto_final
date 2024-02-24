@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchRecipeDetails } from '../services/Api'; // Asegúrate de que la ruta sea correcta según la ubicación de tu archivo api.js
 import '../styles/RecipeDetails.css';
+import { IoIosCloseCircle } from "react-icons/io";
 
 function RecipeDetails({ recipeId, onClose }) {
   const [recipeDetails, setRecipeDetails] = useState(null);
@@ -30,10 +31,11 @@ function RecipeDetails({ recipeId, onClose }) {
 
   const { title, image, extendedIngredients, analyzedInstructions } = recipeDetails;
 
-  return (
+ 
+return (
     <div className="recipe-details-container">
+      <button className="close-button" onClick={onClose}><IoIosCloseCircle size={40} /></button>
       <img src={image} alt={title} className="recipe-image" />
-      <button className="close-button" onClick={onClose}>X</button>
       <div className="recipe-content">
         <h2 className="recipe-title">{title}</h2>
         <div>
@@ -56,5 +58,4 @@ function RecipeDetails({ recipeId, onClose }) {
     </div>
   );
 }
-
 export default RecipeDetails;

@@ -1,0 +1,39 @@
+.carrusel {
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+  }
+  
+  .carrusel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cambiado de 'contain' a 'cover' */
+  }
+  
+  .carrusel .slick-dots {
+    position: absolute; /* Cambiado de 'bottom' a 'absolute' */
+    bottom: 20px; 
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  .carrusel .slick-dots li {
+    display: inline-block;
+    margin: 0 5px;
+  }
+  
+  .carrusel .slick-dots li button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+  }
+  
+  .carrusel .slick-dots li.slick-active button {
+    background-color: #000;
+  }
+  
+  /* Si los estilos generales de imagen están interfiriendo, puedes quitarlos o ajustarlos según sea necesario */
+  

@@ -1,7 +1,18 @@
 /* Home.css */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Asegura que esté por encima de todo el contenido, pero debajo de la superposición */
+}
+
+.content {
+  padding-top: 55px; /* Asegúrate de dejar suficiente espacio para el Navbar */
+}
 
 .overlay {
-    position: fixed;
+position: fixed;
     top: 0;
     left: 0;
     width: 100%;
