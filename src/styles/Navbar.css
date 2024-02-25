@@ -1,7 +1,7 @@
 .navbar {
-  background-color: #333;
+  background-color: #000;
   color: white;
-  padding: 20px; /* Aumentar el padding para hacer el Navbar más grande */
+  padding: 10px 20px; /* Aumentar el padding para hacer el Navbar más grande */
 }
 
 .nav-list {
@@ -9,12 +9,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0;
-  padding: 0;
+ 
 }
 
 .nav-item {
-  margin-right: 25px; /* Aumentar el margen entre elementos */
+  margin-right: 20px; /* Aumentar el margen entre elementos */
 }
 
 .nav-link {

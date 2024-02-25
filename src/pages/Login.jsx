@@ -43,23 +43,31 @@ const Login = () => {
 
   return (
     <div className="container">
-      <h2 className="title">Iniciar sesión</h2>
-      {error && <p className="error">{error}</p>}
-      <form className="form" onSubmit={handleAuthentication}>
-        <div className="input-container">
-          <label htmlFor="email" className="label">Correo electrónico:</label>
-          <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div className="input-container">
-          <label htmlFor="password" className="label">Contraseña:</label>
-          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <div className="button-container">
-          <button type="submit">Iniciar sesión</button>
-        </div>
-      </form>
-      <p>¿No tienes una cuenta? <Link to="/registro">Regístrate aquí</Link>.</p>
+    <div className="image-container">
+      <img src="ruta_de_la_imagen.jpg" alt="Imagen de fondo" />
     </div>
+    <div className="form-container">
+      <div className="form-wrapper">
+        <h2 className="title">Iniciar sesión</h2>
+        {error && <p className="error">{error}</p>}
+        <form className="form" onSubmit={handleAuthentication}>
+          <div className="input-container">
+            <label htmlFor="email" className="label">Correo electrónico:</label>
+            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
+          <div className="input-container">
+            <label htmlFor="password" className="label">Contraseña:</label>
+            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          </div>
+          <div className="button-container">
+            <button type="submit">Iniciar sesión</button>
+          </div>
+        </form>
+        <p>¿No tienes una cuenta? <Link to="/registro">Regístrate aquí</Link>.</p>
+      </div>
+    </div>
+  </div>
+  
   );
 };
 

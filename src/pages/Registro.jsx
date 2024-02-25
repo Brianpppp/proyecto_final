@@ -33,22 +33,29 @@ const Registro = () => {
 
   return (
     <div className="container">
-      <h2 className="title">Registro</h2>
-      {error && <p className="error">{error}</p>}
-      <form className="form" onSubmit={handleRegistration}>
-        <div className="input-container">
-          <label htmlFor="email" className="label">Correo electrónico:</label>
-          <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <div className="image-container">
+        <img src="ruta_de_la_imagen.jpg" alt="Imagen de fondo" />
+      </div>
+      <div className="form-container">
+        <div className="form-wrapper">
+          <h2 className="title">Registro</h2>
+          {error && <p className="error">{error}</p>}
+          <form className="form" onSubmit={handleRegistration}>
+            <div className="input-container">
+              <label htmlFor="email" className="label">Correo electrónico:</label>
+              <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <div className="input-container">
+              <label htmlFor="password" className="label">Contraseña:</label>
+              <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            </div>
+            <div className="button-container">
+              <button type="submit">Registrarse</button>
+            </div>
+          </form>
+          <p>¿Ya tienes una cuenta? <Link to="/">Inicia sesión aquí</Link>.</p>
         </div>
-        <div className="input-container">
-          <label htmlFor="password" className="label">Contraseña:</label>
-          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <div className="button-container">
-          <button type="submit">Registrarse</button>
-        </div>
-      </form>
-      <p>¿Ya tienes una cuenta? <Link to="/">Inicia sesión aquí</Link>.</p>
+      </div>
     </div>
   );
 };

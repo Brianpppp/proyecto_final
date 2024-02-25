@@ -14,4 +14,9 @@ position: fixed;
     align-items: center;
     z-index: 999; /* Asegura que esté por encima de todo el contenido */
   }
-  
+  .overlay-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Sombra suave */
+  }

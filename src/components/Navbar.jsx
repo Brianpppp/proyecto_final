@@ -29,7 +29,7 @@ const Navbar = () => {
     <nav className="navbar">
       <ul className="nav-list">
         <li className="nav-item">
-          <Link to="/" className="nav-link"><TiHomeOutline size={40} /></Link>
+          <Link to="/" className="nav-link"><img src="src/images/logos.png" alt="Inicio" width="150" height="40"  /></Link>
         </li>
         <RecipeSearch/>
         {auth.currentUser && (

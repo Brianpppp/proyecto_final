@@ -22,4 +22,4 @@ const App = () => {
 };
 
 export default App;
-//testezy nombre app
+//MealMate nombre app
