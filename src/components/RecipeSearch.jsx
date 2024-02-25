@@ -27,7 +27,7 @@ function RecipeSearch() {
       <form onSubmit={handleSubmit} className="search-form">
         <input
           type="text"
-          placeholder="Buscar recetas..."
+          placeholder="Search Recipes..."
           value={query}
           onChange={handleChange}
           className="search-input"

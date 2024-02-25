@@ -20,7 +20,6 @@ function SearchResultsPage() {
   return (
     <div>
       <Navbar/>
-      <h2>Recetas de: {query}</h2>
       {/* Mostrar la lista de resultados de la búsqueda */}
       <RecipeList recipes={searchResults} setSelectedRecipe={handleSelectRecipe} />
 

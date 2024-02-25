@@ -6,7 +6,7 @@ import RecipeDetails from '../components/RecipeDetails'; // Cambiamos el import 
 import { apiKey } from '../components/confing';
 import '../styles/Home.css'; // Asegúrate de importar el CSS para el efecto de superposición
 import Carrusel from '../components/Carrusel';
-import RecipeSearch from '../components/RecipeSearch';
+import RecipesRandom from '../components/RecipeRandom';
 
 function Home() {
   const [recipes, setRecipes] = useState([]);
@@ -41,6 +41,8 @@ function Home() {
       <Navbar />
       <div className="content">
         <Carrusel/>
+        <h2>Recetas Populares</h2>
+        <RecipesRandom number={6} setSelectedRecipe={handleSelectRecipe} />
         <RecipeSection category="Meats" apiKey={apiKey} setSelectedRecipe={handleSelectRecipe} />
         <RecipeSection category="Spanish" apiKey={apiKey} setSelectedRecipe={handleSelectRecipe} />
         <RecipeSection category="Vegetarian" apiKey={apiKey} setSelectedRecipe={handleSelectRecipe} />

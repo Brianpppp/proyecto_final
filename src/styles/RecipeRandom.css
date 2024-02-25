@@ -1,0 +1,18 @@
+
+
+.random-recipes-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .random-recipe {
+    width: calc(33.33% - 20px); /* Establece el ancho deseado para cada receta */
+    margin: 10px; /* Espacio entre las recetas */
+  }
+  
+  .random-recipe img {
+    width: 100%; /* Ajusta el tamaño de la imagen para que ocupe todo el contenedor */
+    height: 200px; /* Establece una altura fija para todas las imágenes */
+    object-fit: cover; /* Ajusta el tamaño y recorta la imagen para que encaje */
+  }
+  
